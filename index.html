@@ -16,7 +16,7 @@
         body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--w);min-height:100vh;overflow-x:hidden}
         body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(230,57,70,.05)0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(230,57,70,.03)0%,transparent 50%),radial-gradient(ellipse at 50% 80%,rgba(230,57,70,.04)0%,transparent 50%);pointer-events:none;z-index:0}
         body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.02)1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02)1px,transparent 1px);background-size:50px 50px;pointer-events:none;z-index:0}
-        .container{max-width:1060px;margin:0 auto;padding:40px 20px 60px;position:relative;z-index:1}
+        .container{max-width:1100px;margin:0 auto;padding:40px 16px 60px;position:relative;z-index:1}
         .header{text-align:center;margin-bottom:36px;animation:fadeDown .8s ease-out}
         .header-icon{width:70px;height:70px;margin:0 auto 18px;background:linear-gradient(135deg,var(--red),var(--red-d));border-radius:20px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 40px var(--red-g);animation:pulseG 3s ease-in-out infinite;position:relative}
         .header-icon::before{content:'';position:absolute;inset:-2px;border-radius:22px;background:linear-gradient(135deg,var(--red),transparent,var(--red-l));z-index:-1;opacity:.5}
@@ -36,7 +36,7 @@
         .tab-btn.active .tbadge{background:rgba(255,255,255,.25)}
         .tab-content{display:none;animation:fadeUp .45s ease-out}
         .tab-content.active{display:block}
-        .input-section{background:var(--card);border:1px solid var(--gb);border-radius:20px;padding:34px 38px;margin-bottom:26px;position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s;animation:fadeUp .8s ease-out .2s both}
+        .input-section{background:var(--card);border:1px solid var(--gb);border-radius:20px;padding:30px 28px;margin-bottom:26px;position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s;animation:fadeUp .8s ease-out .2s both}
         .input-section:hover{border-color:rgba(230,57,70,.3);box-shadow:0 5px 30px rgba(0,0,0,.3)}
         .input-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--red-l),var(--red));background-size:200% 100%;animation:shimmer 3s linear infinite}
         .stitle{font-size:1.1rem;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -136,8 +136,6 @@
         .btn-add{width:100%;padding:13px;background:transparent;border:2px dashed var(--gb);border-radius:14px;color:var(--wm);font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:22px}
         .btn-add:hover{border-color:var(--red);color:var(--red-l);background:rgba(230,57,70,.05)}
         .btn-add svg{width:18px;height:18px;fill:currentColor}
-
-        /* VLAN result cards */
         .vlan-result{background:var(--card);border:1px solid var(--gb);border-radius:18px;margin-bottom:18px;overflow:hidden;opacity:0;transform:translateY(20px);transition:all .4s cubic-bezier(.4,0,.2,1)}
         .vlan-result.ain{opacity:1;transform:translateY(0)}
         .vlan-result:hover{border-color:rgba(230,57,70,.35);box-shadow:0 8px 30px rgba(0,0,0,.3)}
@@ -145,10 +143,10 @@
         .vr-header:hover{background:rgba(255,255,255,.02)}
         .vr-header::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:0 4px 4px 0}
         .vr-badge{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:700;color:#fff;flex-shrink:0}
-        .vr-info{flex:1}
+        .vr-info{flex:1;min-width:0}
         .vr-name{font-size:.95rem;font-weight:600;margin-bottom:3px}
-        .vr-sub{font-size:.75rem;color:var(--wm);font-family:'JetBrains Mono',monospace}
-        .vr-stats{display:flex;gap:16px;margin-left:auto}
+        .vr-sub{font-size:.75rem;color:var(--wm);font-family:'JetBrains Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+        .vr-stats{display:flex;gap:16px;margin-left:auto;flex-shrink:0}
         .vr-stat{text-align:center}
         .vr-stat .vsl{font-size:.58rem;color:var(--wm);text-transform:uppercase;letter-spacing:.8px;margin-bottom:2px}
         .vr-stat .vsv{font-family:'JetBrains Mono',monospace;font-size:.85rem;font-weight:600;color:var(--red-l)}
@@ -158,21 +156,17 @@
         .vr-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}
         .vr-body.open{max-height:2000px}
         .vr-body-inner{padding:0 24px 24px}
-
-        /* Color system */
-        .vc0{--vc:#e63946;--vcg:rgba(230,57,70,.3)} .vc1{--vc:#42a5f5;--vcg:rgba(66,165,245,.3)} .vc2{--vc:#4caf50;--vcg:rgba(76,175,80,.3)} .vc3{--vc:#ff9800;--vcg:rgba(255,152,0,.3)} .vc4{--vc:#ab47bc;--vcg:rgba(171,71,188,.3)} .vc5{--vc:#26c6da;--vcg:rgba(38,198,218,.3)} .vc6{--vc:#ec407a;--vcg:rgba(236,64,122,.3)} .vc7{--vc:#fdd835;--vcg:rgba(253,216,53,.3)} .vc8{--vc:#26a69a;--vcg:rgba(38,166,154,.3)}
+        .vc0{--vc:#e63946;--vcg:rgba(230,57,70,.3)}.vc1{--vc:#42a5f5;--vcg:rgba(66,165,245,.3)}.vc2{--vc:#4caf50;--vcg:rgba(76,175,80,.3)}.vc3{--vc:#ff9800;--vcg:rgba(255,152,0,.3)}.vc4{--vc:#ab47bc;--vcg:rgba(171,71,188,.3)}.vc5{--vc:#26c6da;--vcg:rgba(38,198,218,.3)}.vc6{--vc:#ec407a;--vcg:rgba(236,64,122,.3)}.vc7{--vc:#fdd835;--vcg:rgba(253,216,53,.3)}.vc8{--vc:#26a69a;--vcg:rgba(38,166,154,.3)}
         .vlan-result .vr-header::before{background:var(--vc)}
         .vlan-result .vr-badge{background:linear-gradient(135deg,var(--vc),color-mix(in srgb,var(--vc),#000 30%));box-shadow:0 4px 15px var(--vcg)}
         .vlan-result .rcard .cicon{background:color-mix(in srgb,var(--vc),transparent 85%)}
         .vlan-result .rcard .cicon svg{fill:var(--vc)}
         .vlan-result .rcard::after{background:var(--vc)}
         .vlan-result .bbit.n{background:color-mix(in srgb,var(--vc),transparent 80%);color:var(--vc);border-color:color-mix(in srgb,var(--vc),transparent 60%)}
-
-        /* Overview */
         .vlan-overview{background:var(--card);border:1px solid var(--gb);border-radius:18px;padding:24px;margin-bottom:18px;opacity:0;transform:translateY(20px);transition:all .4s cubic-bezier(.4,0,.2,1)}
         .vlan-overview.ain{opacity:1;transform:translateY(0)}
         .vlan-overview:hover{border-color:rgba(230,57,70,.3)}
-        .vo-title{font-size:.74rem;color:var(--wm);text-transform:uppercase;letter-spacing:1.2px;font-weight:500;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+        .vo-title{font-size:.74rem;color:var(--wm);text-transform:uppercase;letter-spacing:1.2px;font-weight:500;margin-bottom:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
         .vo-title svg{width:16px;height:16px;fill:var(--red)}
         .vo-bar{width:100%;height:44px;background:rgba(255,255,255,.03);border-radius:12px;display:flex;overflow:hidden;border:1px solid var(--gb);margin-bottom:12px}
         .vo-seg{display:flex;align-items:center;justify-content:center;font-size:.66rem;font-family:'JetBrains Mono',monospace;font-weight:600;transition:all .6s;white-space:nowrap;overflow:hidden;border-right:1px solid rgba(0,0,0,.3);position:relative;cursor:pointer}
@@ -187,61 +181,61 @@
         .vtable tr:hover td{background:rgba(255,255,255,.02)}
         .vt-color{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:6px;vertical-align:middle}
 
-        /* ═══ TOPOLOGY VISUALIZATION ═══ */
-        .topo-section{background:var(--card);border:1px solid var(--gb);border-radius:18px;padding:28px;margin-bottom:18px;opacity:0;transform:translateY(20px);transition:all .4s cubic-bezier(.4,0,.2,1);overflow:hidden}
+        /* ═══ TOPOLOGY ═══ */
+        .topo-section{background:var(--card);border:1px solid var(--gb);border-radius:18px;padding:24px 10px;margin-bottom:18px;opacity:0;transform:translateY(20px);transition:all .4s cubic-bezier(.4,0,.2,1);overflow:hidden}
         .topo-section.ain{opacity:1;transform:translateY(0)}
         .topo-section:hover{border-color:rgba(230,57,70,.3)}
-        .topo-title{font-size:.76rem;color:var(--wm);text-transform:uppercase;letter-spacing:1.2px;font-weight:500;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+        .topo-title{font-size:.76rem;color:var(--wm);text-transform:uppercase;letter-spacing:1.2px;font-weight:500;margin-bottom:20px;display:flex;align-items:center;gap:8px;padding:0 14px;flex-wrap:wrap}
         .topo-title svg{width:16px;height:16px;fill:var(--red)}
         .topo-title .topo-badge{margin-left:auto;font-size:.6rem;background:rgba(230,57,70,.15);color:var(--red-l);padding:3px 8px;border-radius:10px}
-        .topo-canvas{position:relative;min-height:500px;overflow:visible}
-        /* Router */
+        .topo-scroll{overflow-x:auto;overflow-y:visible;padding-bottom:14px;-webkit-overflow-scrolling:touch}
+        .topo-scroll::-webkit-scrollbar{height:6px}
+        .topo-scroll::-webkit-scrollbar-track{background:transparent}
+        .topo-scroll::-webkit-scrollbar-thumb{background:var(--gb);border-radius:3px}
+        .topo-scroll::-webkit-scrollbar-thumb:hover{background:var(--red)}
+        .topo-canvas{position:relative;margin:0 auto}
         .topo-router{position:absolute;left:50%;top:0;transform:translateX(-50%);text-align:center;z-index:10}
-        .topo-router-box{width:80px;height:80px;background:linear-gradient(135deg,var(--red),var(--red-d));border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto;box-shadow:0 8px 30px var(--red-g);animation:pulseG 3s ease-in-out infinite;position:relative}
+        .topo-router-box{width:74px;height:74px;background:linear-gradient(135deg,var(--red),var(--red-d));border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto;box-shadow:0 8px 30px var(--red-g);animation:pulseG 3s ease-in-out infinite;position:relative}
         .topo-router-box::before{content:'';position:absolute;inset:-3px;border-radius:21px;background:linear-gradient(135deg,var(--red-l),transparent,var(--red));z-index:-1;opacity:.4}
-        .topo-router-box svg{width:36px;height:36px;fill:#fff}
-        .topo-router-label{font-size:.78rem;font-weight:600;margin-top:10px;color:var(--w)}
-        .topo-router-sub{font-size:.66rem;color:var(--wm);font-family:'JetBrains Mono',monospace;margin-top:2px}
-        /* Trunk line */
-        .topo-trunk{position:absolute;left:50%;top:115px;width:4px;background:linear-gradient(180deg,var(--red),var(--gb));border-radius:2px;transform:translateX(-50%);z-index:5;transition:height .6s ease}
-        /* Switch */
+        .topo-router-box svg{width:34px;height:34px;fill:#fff}
+        .topo-router-label{font-size:.76rem;font-weight:600;margin-top:8px;color:var(--w)}
+        .topo-router-sub{font-size:.64rem;color:var(--wm);font-family:'JetBrains Mono',monospace;margin-top:2px}
+        .topo-trunk{position:absolute;left:50%;width:3px;background:linear-gradient(180deg,var(--red),var(--gb));border-radius:2px;transform:translateX(-50%);z-index:5}
         .topo-switch{position:absolute;left:50%;transform:translateX(-50%);text-align:center;z-index:10}
-        .topo-switch-box{width:200px;height:52px;background:var(--bg2);border:2px solid var(--gb);border-radius:14px;display:flex;align-items:center;justify-content:center;gap:10px;margin:0 auto;transition:all .3s}
+        .topo-switch-box{width:190px;height:48px;background:var(--bg2);border:2px solid var(--gb);border-radius:14px;display:flex;align-items:center;justify-content:center;gap:10px;margin:0 auto;transition:all .3s}
         .topo-switch-box:hover{border-color:rgba(230,57,70,.4);box-shadow:0 4px 20px rgba(0,0,0,.4)}
-        .topo-switch-box svg{width:24px;height:24px;fill:var(--red)}
-        .topo-switch-label{font-size:.82rem;font-weight:600}
-        .topo-switch-sub{font-size:.64rem;color:var(--wm);margin-top:6px;font-family:'JetBrains Mono',monospace}
-        /* Branches */
-        .topo-branches{position:absolute;left:0;right:0;z-index:8}
-        .topo-branch{position:absolute;text-align:center}
-        .topo-branch-line{position:absolute;top:0;height:2px;z-index:6}
+        .topo-switch-box svg{width:22px;height:22px;fill:var(--red)}
+        .topo-switch-label{font-size:.8rem;font-weight:600}
+        .topo-switch-sub{font-size:.62rem;color:var(--wm);margin-top:5px;font-family:'JetBrains Mono',monospace}
+        .topo-branch-line{position:absolute;height:2px;z-index:6}
         .topo-branch-line-v{position:absolute;width:2px;z-index:6}
-        /* VLAN Node */
-        .topo-vlan-node{width:160px;border-radius:14px;overflow:hidden;border:2px solid var(--gb);transition:all .4s;background:var(--bg2);position:relative;cursor:default}
-        .topo-vlan-node:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.5)}
-        .tvn-header{padding:12px 14px;display:flex;align-items:center;gap:8px}
-        .tvn-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;box-shadow:0 0 8px currentColor}
-        .tvn-name{font-size:.78rem;font-weight:600;flex:1}
-        .tvn-id{font-size:.6rem;color:var(--wm);font-family:'JetBrains Mono',monospace}
-        .tvn-body{padding:0 14px 12px;font-size:.66rem;font-family:'JetBrains Mono',monospace}
-        .tvn-row{display:flex;justify-content:space-between;padding:3px 0;color:var(--wm)}
-        .tvn-row span:last-child{color:var(--w);font-weight:500}
-        .tvn-hosts{display:flex;gap:3px;margin-top:8px;flex-wrap:wrap;justify-content:center}
-        .tvn-host{width:12px;height:12px;border-radius:3px;transition:all .3s}
-        .tvn-host.active{opacity:.8}
-        .tvn-host.inactive{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.1)}
-        /* Animated dash line */
         .topo-branch-line,.topo-branch-line-v{background:repeating-linear-gradient(90deg,var(--gb) 0 6px,transparent 6px 12px)}
         .topo-branch-line-v{background:repeating-linear-gradient(180deg,var(--gb) 0 6px,transparent 6px 12px)}
+
+        /* VLAN Node — wider, better text handling */
+        .topo-vlan-node{width:180px;border-radius:14px;overflow:hidden;border:2px solid var(--gb);transition:all .4s;background:var(--bg2);position:absolute;cursor:default}
+        .topo-vlan-node:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+        .tvn-header{padding:10px 12px;display:flex;align-items:center;gap:7px}
+        .tvn-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;box-shadow:0 0 8px currentColor}
+        .tvn-name{font-size:.76rem;font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+        .tvn-id{font-size:.58rem;color:var(--wm);font-family:'JetBrains Mono',monospace;flex-shrink:0}
+        .tvn-body{padding:0 12px 10px;font-size:.62rem;font-family:'JetBrains Mono',monospace}
+        .tvn-row{display:flex;justify-content:space-between;padding:2.5px 0;color:var(--wm);gap:6px}
+        .tvn-row span:first-child{flex-shrink:0}
+        .tvn-row span:last-child{color:var(--w);font-weight:500;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+        .tvn-hosts{display:flex;gap:2px;margin-top:6px;flex-wrap:wrap;justify-content:center}
+        .tvn-host{width:10px;height:10px;border-radius:2px;transition:all .3s}
+        .tvn-host.active{opacity:.8}
+        .tvn-host.inactive{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.1)}
 
         /* Address map */
         .addr-map{background:var(--card);border:1px solid var(--gb);border-radius:18px;padding:24px;margin-bottom:18px;opacity:0;transform:translateY(20px);transition:all .4s cubic-bezier(.4,0,.2,1)}
         .addr-map.ain{opacity:1;transform:translateY(0)}
         .addr-map:hover{border-color:rgba(230,57,70,.3)}
-        .addr-blocks{display:flex;flex-wrap:wrap;gap:3px;margin-top:14px}
-        .addr-block{height:20px;border-radius:3px;transition:all .4s;cursor:pointer;position:relative;min-width:4px}
+        .addr-blocks{display:flex;flex-wrap:nowrap;gap:2px;margin-top:14px;height:28px;align-items:stretch}
+        .addr-block{border-radius:3px;transition:all .4s;cursor:pointer;position:relative;min-width:3px}
         .addr-block:hover{transform:scaleY(1.6);z-index:5}
-        .addr-block .ab-tip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--gb);border-radius:8px;padding:8px 12px;font-size:.66rem;font-family:'JetBrains Mono',monospace;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.6)}
+        .addr-block .ab-tip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--gb);border-radius:8px;padding:8px 12px;font-size:.64rem;font-family:'JetBrains Mono',monospace;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.6)}
         .addr-block:hover .ab-tip{opacity:1}
         .addr-block .ab-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--gb)}
 
@@ -255,16 +249,15 @@
         @keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
         @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
         @keyframes dotP{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
-        @keyframes flowDash{0%{background-position:0 0}100%{background-position:24px 0}}
+        @keyframes nodeAppear{from{opacity:0;transform:scale(.7) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
         @keyframes flowDashV{0%{background-position:0 0}100%{background-position:0 24px}}
-        @keyframes nodeAppear{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
 
         @media(max-width:700px){
-            .container{padding:20px 14px 40px}
+            .container{padding:20px 10px 40px}
             .header h1{font-size:1.6rem}
             .input-grid,.input-grid.three{grid-template-columns:1fr}
             .rgrid{grid-template-columns:1fr}
-            .input-section{padding:22px 18px}
+            .input-section{padding:20px 16px}
             .bbit{width:20px;height:26px;font-size:.66rem}
             .sbar{flex-wrap:wrap;gap:10px;justify-content:center}
             .sbar-d{display:none}
@@ -278,8 +271,7 @@
             .vr-body-inner{padding:0 18px 18px}
             .vtable{font-size:.68rem}
             .vtable th,.vtable td{padding:7px 8px}
-            .topo-canvas{min-height:auto}
-            .topo-vlan-node{width:130px}
+            .topo-vlan-node{width:160px}
             .tvn-hosts{display:none}
         }
         ::-webkit-scrollbar{width:8px}
@@ -301,7 +293,6 @@
         <button class="tab-btn" onclick="switchTab('vlan')" id="tab-btn-vlan"><svg viewBox="0 0 24 24"><path d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z"/></svg>VLAN Calculator<span class="tbadge">Mode 3</span></button>
     </div>
 
-    <!-- HOST TAB -->
     <div class="tab-content active" id="tab-host">
         <div class="input-section">
             <div class="stitle"><span class="dot"></span>Host-Based Calculation<span class="badge">IP + Hosts</span></div>
@@ -316,7 +307,6 @@
         <div class="results-section" id="res-host"></div>
     </div>
 
-    <!-- CIDR TAB -->
     <div class="tab-content" id="tab-cidr">
         <div class="input-section">
             <div class="stitle"><span class="dot"></span>CIDR Notation Checker<span class="badge">IP + /CIDR</span></div>
@@ -331,7 +321,6 @@
         <div class="results-section" id="res-cidr"></div>
     </div>
 
-    <!-- VLAN TAB -->
     <div class="tab-content" id="tab-vlan">
         <div class="input-section">
             <div class="stitle"><span class="dot"></span>VLAN Subnetting Calculator<span class="badge">Multi-VLAN</span></div>
@@ -368,7 +357,6 @@ function compute(ip,mb){
     return{maskedBits:mb,hostBits:hb,subnetMask:int2ip(maskI),slash:'/'+mb,network:int2ip(netI),broadcast:int2ip(brdI),first:int2ip(netI+1),last:int2ip(brdI-1),usable:Math.pow(2,hb)-2,total:Math.pow(2,hb),subnets:subs,cls:ipClass(ip),wildcard:int2ip(wcI),networkInt:netI,broadcastInt:brdI,blockSize:Math.pow(2,hb)};
 }
 function switchTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.getElementById('tab-btn-'+t).classList.add('active');const c=document.getElementById('tab-'+t);c.classList.add('active');c.style.animation='none';void c.offsetWidth;c.style.animation='fadeUp .45s ease-out'}
-
 function renderSingle(cid,data,label){
     const c=document.getElementById(cid);
     c.innerHTML=`<div class="rhead"><h2><span class="dot"></span>Results</h2><span class="mbadge">${label}</span></div>
@@ -388,17 +376,14 @@ function renderSingle(cid,data,label){
     setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'start'}),300);
 }
 function buildBin(cid,mb){const c=document.getElementById(cid);if(!c)return;c.innerHTML='';for(let o=0;o<4;o++){if(o>0){const s=document.createElement('div');s.className='bsep';s.textContent='.';c.appendChild(s)}const od=document.createElement('div');od.className='boctet';for(let b=0;b<8;b++){const bi=o*8+b,bd=document.createElement('div');bd.className='bbit '+(bi<mb?'n':'h');bd.textContent=bi<mb?'1':'0';bd.style.opacity='0';bd.style.transform='scale(.5)';setTimeout(()=>{bd.style.transition='all .3s';bd.style.opacity='1';bd.style.transform='scale(1)'},700+bi*22);od.appendChild(bd)}c.appendChild(od)}}
-
 function calcHost(){hideErr('err-host');const ip=document.getElementById('ip-host').value.trim(),h=document.getElementById('hosts-host').value.trim();if(!ip||!validIP(ip))return showErr('err-host','Enter a valid IP.');if(!h||isNaN(h)||+h<1)return showErr('err-host','Enter valid host count.');if(+h>16777214)return showErr('err-host','Max 16,777,214.');const btn=document.getElementById('btn-host');btn.classList.add('loading');setTimeout(()=>{btn.classList.remove('loading');renderSingle('res-host',compute(ip,hostsToMask(+h)),'Host-Based')},500)}
 function calcCIDR(){hideErr('err-cidr');const ip=document.getElementById('ip-cidr').value.trim(),p=document.getElementById('cidr-pfx').value.trim();if(!ip||!validIP(ip))return showErr('err-cidr','Enter a valid IP.');if(!p||isNaN(p)||+p<1||+p>30)return showErr('err-cidr','Prefix must be 1–30.');const btn=document.getElementById('btn-cidr');btn.classList.add('loading');setTimeout(()=>{btn.classList.remove('loading');renderSingle('res-cidr',compute(ip,+p),'CIDR Checker')},500)}
 
-// VLAN
 let vc=0;
 function addVLAN(n='',h=''){vc++;const list=document.getElementById('vlan-list'),div=document.createElement('div');div.className='vlan-entry';div.id='vlan-'+vc;div.innerHTML=`<div class="vlan-num">${vc}</div><div class="igroup"><label>VLAN Name</label><input type="text" placeholder="e.g. Sales" value="${n}" class="vn"></div><div class="igroup"><label>IP (Optional)</label><input type="text" placeholder="Auto" class="vi" maxlength="15"></div><div class="igroup"><label>Hosts</label><input type="number" placeholder="30" min="1" class="vh" value="${h}"></div><div class="vlan-remove" onclick="removeVLAN(${vc})"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></div>`;list.appendChild(div);renum()}
 function removeVLAN(id){const e=document.getElementById('vlan-'+id);if(e){e.style.transition='all .3s';e.style.opacity='0';e.style.transform='translateX(30px)';setTimeout(()=>{e.remove();renum()},300)}}
 function renum(){document.querySelectorAll('.vlan-entry').forEach((e,i)=>{e.querySelector('.vlan-num').textContent=i+1})}
 addVLAN('Sales','30');addVLAN('Engineering','50');addVLAN('Management','10');
-
 document.querySelectorAll('#ip-host,#hosts-host').forEach(e=>e.addEventListener('keydown',ev=>{if(ev.key==='Enter')calcHost()}));
 document.querySelectorAll('#ip-cidr,#cidr-pfx').forEach(e=>e.addEventListener('keydown',ev=>{if(ev.key==='Enter')calcCIDR()}));
 
@@ -436,11 +421,8 @@ function renderVLAN(results,base){
         oleg+=`<div class="vo-leg-i"><span class="vo-leg-c" style="background:${C_HEX[ci]}66;border:1px solid ${C_HEX[ci]}"></span>${r.vlanName}</div>`;
         trows+=`<tr><td><span class="vt-color" style="background:${C_HEX[ci]}"></span>${r.vlanName}</td><td>${r.network}${r.slash}</td><td>${r.subnetMask}</td><td>${r.reqHosts}</td><td>${r.usable.toLocaleString()}</td><td>${r.first}</td><td>${r.last}</td></tr>`;});
     if(freeP>0.5){osegs+=`<div class="vo-seg" style="flex:${freeP};background:rgba(255,255,255,.03);color:var(--wm)">${freeP>8?'Free':''}</div>`;oleg+=`<div class="vo-leg-i"><span class="vo-leg-c" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15)"></span>Unused</div>`}
-
-    // Build topology
     const topoHTML=buildTopology(results,base);
     const addrMapHTML=buildAddrMap(results,base);
-
     results.forEach((r,i)=>{const ci=COLORS[r.colorIdx%COLORS.length];
         vcards+=`<div class="vlan-result ${ci}" style="transition-delay:${.3+i*.12}s" id="vr-${i}"><div class="vr-header" onclick="toggleVR(${i})"><div class="vr-badge">${r.vlanName.charAt(0).toUpperCase()}</div><div class="vr-info"><div class="vr-name">${r.vlanName}</div><div class="vr-sub">${r.network}${r.slash} • ${r.subnetMask}</div></div><div class="vr-stats"><div class="vr-stat"><div class="vsl">Hosts</div><div class="vsv">${r.usable.toLocaleString()}</div></div><div class="vr-stat"><div class="vsl">Mask</div><div class="vsv">${r.slash}</div></div><div class="vr-stat"><div class="vsl">Bits</div><div class="vsv">${r.maskedBits}</div></div></div><div class="vr-toggle" id="vrt-${i}"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></div></div>
         <div class="vr-body" id="vrb-${i}"><div class="vr-body-inner"><div class="rgrid">
@@ -451,10 +433,8 @@ function renderVLAN(results,base){
             <div class="rangec" style="transition-delay:.3s"><div class="rbar-t"><svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>Range</div><div class="rbar"><div class="rseg rnet">NET</div><div class="rseg ruse">${r.usable.toLocaleString()} Usable</div><div class="rseg rbrd">BRD</div></div><div class="rlabels"><span>${r.network}</span><span class="rlc">${r.first} — ${r.last}</span><span>${r.broadcast}</span></div></div>
             <div class="bcard" style="transition-delay:.35s"><div class="btitle"><svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>Binary Mask</div><div class="bdisp" id="bin-vlan-${i}"></div><div class="bleg"><div class="bleg-i"><span class="bleg-c n"></span>Network (${r.maskedBits})</div><div class="bleg-i"><span class="bleg-c h"></span>Host (${r.hostBits})</div></div></div>
         </div></div></div></div>`;});
-
     c.innerHTML=`<div class="rhead"><h2><span class="dot"></span>VLAN Subnetting Results</h2><span class="mbadge">${results.length} VLANs</span></div>
-    ${topoHTML}
-    ${addrMapHTML}
+    ${topoHTML}${addrMapHTML}
     <div class="vlan-overview" style="transition-delay:.15s"><div class="vo-title"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>Network Space — ${base.network}/${base.cidr}</div><div class="vo-bar">${osegs}</div><div class="vo-legend">${oleg}</div><div style="text-align:center;margin-top:10px;font-size:.76rem;color:var(--wm)"><span style="color:var(--red-l);font-weight:600">${usedP}%</span> allocated · <span style="color:var(--green);font-weight:600">${freeP}%</span> free · Total: <span style="color:var(--w);font-weight:600">${base.totalHosts.toLocaleString()}</span></div></div>
     <div class="vlan-overview" style="transition-delay:.2s"><div class="vo-title"><svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>Summary Table</div><div style="overflow-x:auto"><table class="vtable"><thead><tr><th>VLAN</th><th>Network</th><th>Mask</th><th>Req.</th><th>Usable</th><th>First</th><th>Last</th></tr></thead><tbody>${trows}</tbody></table></div></div>
     ${vcards}`;
@@ -466,34 +446,51 @@ function renderVLAN(results,base){
 
 function buildTopology(results,base){
     const n=results.length;
-    const W=Math.max(n*190, 600);
-    const switchY=150;
-    const branchStartY=switchY+80;
-    const nodeY=branchStartY+70;
-    const totalH=nodeY+220;
-    const spacing=W/n;
+    const NODE_W=190; // node card width
+    const NODE_GAP=16; // gap between nodes
+    const SIDE_PAD=10; // padding inside the scroll area
+    const canvasW=Math.max(n*(NODE_W+NODE_GAP)-NODE_GAP+SIDE_PAD*2, 500);
+
+    const routerY=0;
+    const routerH=74;
+    const routerLabelH=42;
+    const trunkTopY=routerH+routerLabelH;
+    const switchY=trunkTopY+30;
+    const switchH=48;
+    const switchLabelH=22;
+    const branchTopY=switchY+switchH;
+    const branchVertLen=60;
+    const nodeY=branchTopY+branchVertLen;
+    const nodeEstH=260;
+    const totalH=nodeY+nodeEstH+10;
+
+    const switchMidX=canvasW/2;
 
     let nodesHTML='';
     let linesHTML='';
-    const switchMidX=W/2;
 
     results.forEach((r,i)=>{
         const ci=r.colorIdx%C_HEX.length;
         const col=C_HEX[ci];
-        const cx=spacing*i+spacing/2;
-        const hostDots=Math.min(r.reqHosts,20);
-        let dots='';
-        for(let d=0;d<hostDots;d++) dots+=`<div class="tvn-host active" style="background:${col}55;border:1px solid ${col}88;animation:nodeAppear .3s ${.8+d*.04}s both"></div>`;
-        if(r.reqHosts>20) dots+=`<div style="font-size:.6rem;color:var(--wm);width:100%;text-align:center;margin-top:2px">+${r.reqHosts-20} more</div>`;
+        const nodeLeft=SIDE_PAD+i*(NODE_W+NODE_GAP);
+        const nodeCenterX=nodeLeft+NODE_W/2;
 
-        // Horizontal line from switch center to above node
-        const lineLeft=Math.min(switchMidX,cx);
-        const lineRight=Math.max(switchMidX,cx);
-        linesHTML+=`<div class="topo-branch-line" style="left:${lineLeft}px;top:${switchY+52}px;width:${lineRight-lineLeft}px;animation:shimmer 2s linear infinite;background:repeating-linear-gradient(90deg,${col}44 0 6px,transparent 6px 12px)"></div>`;
+        // Horizontal line from switch center to node center
+        const hLineLeft=Math.min(switchMidX,nodeCenterX);
+        const hLineRight=Math.max(switchMidX,nodeCenterX);
+        const hLineW=hLineRight-hLineLeft;
+        if(hLineW>1){
+            linesHTML+=`<div class="topo-branch-line" style="left:${hLineLeft}px;top:${branchTopY}px;width:${hLineW}px;background:repeating-linear-gradient(90deg,${col}55 0 6px,transparent 6px 12px)"></div>`;
+        }
         // Vertical line down to node
-        linesHTML+=`<div class="topo-branch-line-v" style="left:${cx}px;top:${switchY+52}px;height:${nodeY-(switchY+52)}px;background:repeating-linear-gradient(180deg,${col}44 0 6px,transparent 6px 12px);animation:flowDashV 1s linear infinite"></div>`;
+        linesHTML+=`<div class="topo-branch-line-v" style="left:${nodeCenterX-1}px;top:${branchTopY}px;height:${branchVertLen}px;background:repeating-linear-gradient(180deg,${col}55 0 6px,transparent 6px 12px);animation:flowDashV 1s linear infinite"></div>`;
 
-        nodesHTML+=`<div class="topo-vlan-node" style="position:absolute;left:${cx-80}px;top:${nodeY}px;border-color:${col}44;animation:nodeAppear .5s ${.3+i*.15}s both">
+        const hostDots=Math.min(r.reqHosts,16);
+        let dots='';
+        for(let d=0;d<hostDots;d++) dots+=`<div class="tvn-host active" style="background:${col}55;border:1px solid ${col}88;animation:nodeAppear .3s ${.8+d*.03}s both"></div>`;
+        if(r.reqHosts>16) dots+=`<div style="font-size:.56rem;color:var(--wm);width:100%;text-align:center;margin-top:1px">+${r.reqHosts-16} more</div>`;
+
+        nodesHTML+=`<div class="topo-vlan-node" style="left:${nodeLeft}px;top:${nodeY}px;width:${NODE_W}px;border-color:${col}44;animation:nodeAppear .5s ${.3+i*.12}s both">
             <div class="tvn-header" style="border-bottom:1px solid ${col}22">
                 <div class="tvn-dot" style="background:${col};color:${col}"></div>
                 <div class="tvn-name">${r.vlanName}</div>
@@ -503,37 +500,30 @@ function buildTopology(results,base){
                 <div class="tvn-row"><span>Network</span><span>${r.network}</span></div>
                 <div class="tvn-row"><span>Mask</span><span>${r.subnetMask}</span></div>
                 <div class="tvn-row"><span>Gateway</span><span>${r.first}</span></div>
-                <div class="tvn-row"><span>Range</span><span>${r.first}–${r.last}</span></div>
-                <div class="tvn-row"><span>Hosts</span><span style="color:${col}">${r.usable.toLocaleString()}</span></div>
+                <div class="tvn-row"><span>Range</span><span>${r.first} –</span></div>
+                <div class="tvn-row"><span></span><span>${r.last}</span></div>
+                <div class="tvn-row"><span>Hosts</span><span style="color:${col};font-weight:700">${r.usable.toLocaleString()}</span></div>
                 <div class="tvn-row"><span>Broadcast</span><span>${r.broadcast}</span></div>
                 <div class="tvn-hosts">${dots}</div>
             </div>
         </div>`;
     });
 
-    // Trunk line from router to switch
-    const trunkH=switchY-115+28;
-
     return `<div class="topo-section" style="transition-delay:.08s">
         <div class="topo-title"><svg viewBox="0 0 24 24"><path d="M17 16l-4-4V8.82C14.16 8.4 15 7.3 15 6c0-1.66-1.34-3-3-3S9 4.34 9 6c0 1.3.84 2.4 2 2.82V12l-4 4H3v5h5v-3.05l4-4.2 4 4.2V21h5v-5h-4z"/></svg>Network Topology After Subnetting<span class="topo-badge">Interactive</span></div>
-        <div style="overflow-x:auto;padding-bottom:10px">
-            <div class="topo-canvas" style="width:${W}px;height:${totalH}px;margin:0 auto;position:relative">
-                <!-- Router -->
-                <div class="topo-router" style="left:${switchMidX}px">
+        <div class="topo-scroll">
+            <div class="topo-canvas" style="width:${canvasW}px;height:${totalH}px;position:relative">
+                <div class="topo-router" style="left:${switchMidX}px;top:${routerY}px">
                     <div class="topo-router-box"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div>
                     <div class="topo-router-label">Gateway Router</div>
                     <div class="topo-router-sub">${base.network}/${base.cidr}</div>
                 </div>
-                <!-- Trunk -->
-                <div class="topo-trunk" style="height:${trunkH}px"></div>
-                <!-- Switch -->
+                <div class="topo-trunk" style="top:${trunkTopY}px;height:${switchY-trunkTopY}px"></div>
                 <div class="topo-switch" style="top:${switchY}px;left:${switchMidX}px">
                     <div class="topo-switch-box"><svg viewBox="0 0 24 24"><path d="M20 3H4c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM5 9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm3 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12-1c0 .55-.45 1-1 1H12V6h7c.55 0 1 .45 1 1z"/></svg><span class="topo-switch-label">L3 Switch</span></div>
                     <div class="topo-switch-sub">${results.length} VLANs configured</div>
                 </div>
-                <!-- Branches & Nodes -->
-                ${linesHTML}
-                ${nodesHTML}
+                ${linesHTML}${nodesHTML}
             </div>
         </div>
     </div>`;
@@ -542,51 +532,22 @@ function buildTopology(results,base){
 function buildAddrMap(results,base){
     const totalAddrs=base.totalHosts;
     const maxBlocks=200;
-    let scale=1;
-    if(totalAddrs>maxBlocks)scale=totalAddrs/maxBlocks;
-    const displayTotal=Math.min(totalAddrs,maxBlocks);
-
-    // Build block data
-    const blocks=[];
-    let addr=base.baseNetI;
+    let scale=1;if(totalAddrs>maxBlocks)scale=totalAddrs/maxBlocks;
+    const blocks=[];let addr=base.baseNetI;
     const sortedR=[...results].sort((a,b)=>a.networkInt-b.networkInt);
-
     for(const r of sortedR){
-        // Gap before this VLAN
-        if(r.networkInt>addr){
-            const gap=r.networkInt-addr;
-            const gapBlocks=Math.max(1,Math.round(gap/scale));
-            blocks.push({type:'free',size:gapBlocks,label:`Free: ${int2ip(addr)} — ${int2ip(r.networkInt-1)}`,count:gap});
-            addr=r.networkInt;
-        }
-        const vBlocks=Math.max(1,Math.round(r.blockSize/scale));
-        blocks.push({type:'vlan',size:vBlocks,color:C_HEX[r.colorIdx%C_HEX.length],label:`${r.vlanName}: ${r.network}${r.slash} (${r.usable} hosts)`,name:r.vlanName,count:r.blockSize});
-        addr=r.networkInt+r.blockSize;
-    }
-    // Trailing free space
-    if(addr<=base.baseBrdI){
-        const gap=base.baseBrdI-addr+1;
-        const gapBlocks=Math.max(1,Math.round(gap/scale));
-        blocks.push({type:'free',size:gapBlocks,label:`Free: ${int2ip(addr)} — ${int2ip(base.baseBrdI)}`,count:gap});
-    }
-
-    let blocksHTML='';
-    const totalBlocks=blocks.reduce((s,b)=>s+b.size,0);
+        if(r.networkInt>addr){const gap=r.networkInt-addr;blocks.push({type:'free',size:Math.max(1,Math.round(gap/scale)),label:`Free: ${int2ip(addr)} – ${int2ip(r.networkInt-1)}`,count:gap})}
+        blocks.push({type:'vlan',size:Math.max(1,Math.round(r.blockSize/scale)),color:C_HEX[r.colorIdx%C_HEX.length],label:`${r.vlanName}: ${r.network}${r.slash} (${r.usable} hosts)`,name:r.vlanName,count:r.blockSize});
+        addr=r.networkInt+r.blockSize;}
+    if(addr<=base.baseBrdI){const gap=base.baseBrdI-addr+1;blocks.push({type:'free',size:Math.max(1,Math.round(gap/scale)),label:`Free: ${int2ip(addr)} – ${int2ip(base.baseBrdI)}`,count:gap})}
+    let bhtml='';
     blocks.forEach(b=>{
-        const pct=(b.size/totalBlocks*100).toFixed(2);
-        if(b.type==='vlan'){
-            blocksHTML+=`<div class="addr-block" style="flex:${b.size};background:${b.color}33;border:1px solid ${b.color}66;border-radius:3px"><div class="ab-tip"><span style="color:${b.color};font-weight:600">${b.name}</span><br>${b.label}<br><span style="color:var(--wm)">${b.count} addresses</span></div></div>`;
-        }else{
-            blocksHTML+=`<div class="addr-block" style="flex:${b.size};background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:3px"><div class="ab-tip"><span style="color:var(--wm)">Unallocated</span><br>${b.label}<br><span style="color:var(--wm)">${b.count} addresses</span></div></div>`;
-        }
-    });
-
+        if(b.type==='vlan') bhtml+=`<div class="addr-block" style="flex:${b.size};background:${b.color}33;border:1px solid ${b.color}66"><div class="ab-tip"><span style="color:${b.color};font-weight:600">${b.name}</span><br>${b.label}<br><span style="color:var(--wm)">${b.count} addresses</span></div></div>`;
+        else bhtml+=`<div class="addr-block" style="flex:${b.size};background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)"><div class="ab-tip"><span style="color:var(--wm)">Unallocated</span><br>${b.label}<br><span style="color:var(--wm)">${b.count} addresses</span></div></div>`;});
     return `<div class="addr-map" style="transition-delay:.12s">
         <div class="vo-title"><svg viewBox="0 0 24 24"><path d="M3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2zm12 4c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2V7h2v2h4V7h2v2zm-2 6H9v-2h4v2z"/></svg>Address Space Map — Hover to inspect<span class="topo-badge" style="margin-left:auto">${base.totalHosts.toLocaleString()} addresses</span></div>
-        <div class="addr-blocks" style="display:flex;gap:2px;align-items:stretch;height:28px">${blocksHTML}</div>
-        <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:.64rem;color:var(--wm);font-family:'JetBrains Mono',monospace">
-            <span>${base.network}</span><span>${base.broadcast}</span>
-        </div>
+        <div class="addr-blocks">${bhtml}</div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:.64rem;color:var(--wm);font-family:'JetBrains Mono',monospace"><span>${base.network}</span><span>${base.broadcast}</span></div>
     </div>`;
 }
 
