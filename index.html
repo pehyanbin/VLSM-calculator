@@ -124,6 +124,37 @@
         .sbar-i .sl{font-size:.64rem;color:var(--wm);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
         .sbar-i .sv{font-family:'JetBrains Mono',monospace;font-size:.85rem;font-weight:600;color:var(--red-l)}
         .sbar-d{width:1px;height:32px;background:var(--gb);flex-shrink:0}
+
+        /* ═══ HIERARCHY PANEL ═══ */
+        .hier-panel{background:var(--card);border:1px solid var(--gb);border-radius:16px;padding:22px;margin-top:14px;opacity:0;transform:translateY(20px);transition:all .4s cubic-bezier(.4,0,.2,1)}
+        .hier-panel.ain{opacity:1;transform:translateY(0)}
+        .hier-panel:hover{border-color:rgba(230,57,70,.3)}
+        .hier-title{font-size:.72rem;color:var(--wm);text-transform:uppercase;letter-spacing:1.2px;font-weight:500;margin-bottom:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+        .hier-title svg{width:15px;height:15px;fill:var(--red)}
+        .hier-title .htag{margin-left:auto;font-size:.6rem;background:rgba(230,57,70,.15);color:var(--red-l);padding:2px 8px;border-radius:8px}
+        .hier-levels{display:flex;flex-direction:column;gap:10px}
+        .hier-level{position:relative}
+        .hier-level-label{font-size:.68rem;color:var(--wm);font-family:'JetBrains Mono',monospace;margin-bottom:5px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px}
+        .hier-level-label .hl-name{font-weight:600;color:var(--w2)}
+        .hier-level-label .hl-info{color:var(--wm);font-size:.62rem}
+        .hier-bar-wrap{position:relative;width:100%;height:30px;background:rgba(255,255,255,.03);border-radius:8px;overflow:hidden;border:1px solid var(--gb)}
+        .hier-bar-bg{position:absolute;inset:0;display:flex}
+        .hier-bar-seg{height:100%;transition:all .6s cubic-bezier(.4,0,.2,1)}
+        .hier-bar-seg.seg-subnet{background:rgba(230,57,70,.35);border-right:2px solid var(--red)}
+        .hier-bar-seg.seg-free{background:rgba(255,255,255,.04)}
+        .hier-bar-overlay{position:absolute;inset:0;display:flex;align-items:center;padding:0 10px;pointer-events:none}
+        .hier-bar-overlay span{font-size:.62rem;font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--red-l);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .hier-connector{display:flex;align-items:center;gap:6px;padding:2px 0 2px 8px}
+        .hier-connector-line{width:2px;height:10px;background:var(--gb);margin-left:10px}
+        .hier-connector-arrow{font-size:.7rem;color:var(--wm)}
+        .hier-stats-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+        .hier-stat{flex:1;min-width:100px;background:var(--bg2);border:1px solid var(--gb);border-radius:10px;padding:10px 12px;transition:all .3s}
+        .hier-stat:hover{border-color:rgba(230,57,70,.3)}
+        .hier-stat .hsl{font-size:.6rem;color:var(--wm);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+        .hier-stat .hsv{font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:600;color:var(--red-l)}
+        .hier-stat .hss{font-size:.58rem;color:var(--wm);margin-top:2px}
+        .hier-class-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(230,57,70,.12);border:1px solid rgba(230,57,70,.25);border-radius:8px;padding:4px 10px;font-size:.68rem;font-family:'JetBrains Mono',monospace;color:var(--red-l);font-weight:600}
+
         .vlan-list{margin-bottom:22px}
         .vlan-entry{display:grid;grid-template-columns:auto 1.5fr 2fr 1fr auto;gap:12px;align-items:end;padding:14px 18px;background:var(--bg2);border:1px solid var(--gb);border-radius:14px;margin-bottom:10px;transition:all .35s;animation:fadeUp .4s ease-out}
         .vlan-entry:hover{border-color:rgba(230,57,70,.25)}
@@ -211,8 +242,6 @@
         .topo-branch-line-v{position:absolute;width:2px;z-index:6}
         .topo-branch-line,.topo-branch-line-v{background:repeating-linear-gradient(90deg,var(--gb) 0 6px,transparent 6px 12px)}
         .topo-branch-line-v{background:repeating-linear-gradient(180deg,var(--gb) 0 6px,transparent 6px 12px)}
-
-        /* VLAN Node — wider, better text handling */
         .topo-vlan-node{width:180px;border-radius:14px;overflow:hidden;border:2px solid var(--gb);transition:all .4s;background:var(--bg2);position:absolute;cursor:default}
         .topo-vlan-node:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.5)}
         .tvn-header{padding:10px 12px;display:flex;align-items:center;gap:7px}
@@ -227,8 +256,6 @@
         .tvn-host{width:10px;height:10px;border-radius:2px;transition:all .3s}
         .tvn-host.active{opacity:.8}
         .tvn-host.inactive{background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.1)}
-
-        /* Address map */
         .addr-map{background:var(--card);border:1px solid var(--gb);border-radius:18px;padding:24px;margin-bottom:18px;opacity:0;transform:translateY(20px);transition:all .4s cubic-bezier(.4,0,.2,1)}
         .addr-map.ain{opacity:1;transform:translateY(0)}
         .addr-map:hover{border-color:rgba(230,57,70,.3)}
@@ -238,10 +265,8 @@
         .addr-block .ab-tip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--gb);border-radius:8px;padding:8px 12px;font-size:.64rem;font-family:'JetBrains Mono',monospace;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.6)}
         .addr-block:hover .ab-tip{opacity:1}
         .addr-block .ab-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--gb)}
-
         .footer{text-align:center;margin-top:36px;color:var(--wm);font-size:.76rem;opacity:.5}
         .footer span{color:var(--red)}
-
         @keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
         @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
         @keyframes pulseG{0%,100%{box-shadow:0 10px 40px var(--red-g)}50%{box-shadow:0 10px 60px rgba(230,57,70,.5)}}
@@ -251,7 +276,7 @@
         @keyframes dotP{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
         @keyframes nodeAppear{from{opacity:0;transform:scale(.7) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
         @keyframes flowDashV{0%{background-position:0 0}100%{background-position:0 24px}}
-
+        @keyframes hierFill{from{width:0}to{width:var(--tw)}}
         @media(max-width:700px){
             .container{padding:20px 10px 40px}
             .header h1{font-size:1.6rem}
@@ -273,6 +298,7 @@
             .vtable th,.vtable td{padding:7px 8px}
             .topo-vlan-node{width:160px}
             .tvn-hosts{display:none}
+            .hier-stats-row{flex-direction:column}
         }
         ::-webkit-scrollbar{width:8px}
         ::-webkit-scrollbar-track{background:var(--bg)}
@@ -337,12 +363,13 @@
         </div>
         <div class="results-section" id="res-vlan"></div>
     </div>
-    <div class="footer">Built with <span>♥</span> — Subnet Calculator v3.0</div>
+    <div class="footer">Built with <span>♥</span> — Subnet Calculator v3.1</div>
 </div>
 
 <script>
 const COLORS=['vc0','vc1','vc2','vc3','vc4','vc5','vc6','vc7','vc8'];
 const C_HEX=['#e63946','#42a5f5','#4caf50','#ff9800','#ab47bc','#26c6da','#ec407a','#fdd835','#26a69a'];
+
 function validIP(ip){const p=ip.split('.');if(p.length!==4)return false;for(let s of p){if(s===''||isNaN(s))return false;const n=+s;if(n<0||n>255||s!==String(n))return false}return true}
 function ip2int(ip){const p=ip.split('.').map(Number);return((p[0]<<24)|(p[1]<<16)|(p[2]<<8)|p[3])>>>0}
 function int2ip(n){return[(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255].join('.')}
@@ -351,14 +378,129 @@ function ipClass(ip){const f=+ip.split('.')[0];if(f>=1&&f<=126)return'A';if(f>=1
 function showErr(id,msg){const e=document.getElementById(id);document.getElementById(id+'-t').textContent=msg;e.classList.remove('show');void e.offsetWidth;e.classList.add('show')}
 function hideErr(id){document.getElementById(id).classList.remove('show')}
 function hostsToMask(h){let b=0;while((Math.pow(2,b)-2)<h){b++;if(b>30)break}if(b<2)b=2;return 32-b}
+
 function compute(ip,mb){
     const hb=32-mb,maskI=mb===0?0:(0xFFFFFFFF<<hb)>>>0,ipI=ip2int(ip),netI=(ipI&maskI)>>>0,wcI=(~maskI)>>>0,brdI=(netI|wcI)>>>0;
     const dm=defMask(ip);let subs=1;if(mb>dm)subs=Math.pow(2,mb-dm);
     return{maskedBits:mb,hostBits:hb,subnetMask:int2ip(maskI),slash:'/'+mb,network:int2ip(netI),broadcast:int2ip(brdI),first:int2ip(netI+1),last:int2ip(brdI-1),usable:Math.pow(2,hb)-2,total:Math.pow(2,hb),subnets:subs,cls:ipClass(ip),wildcard:int2ip(wcI),networkInt:netI,broadcastInt:brdI,blockSize:Math.pow(2,hb)};
 }
+
+/* ── Classful hierarchy builder ── */
+function buildHierarchy(data){
+    const ip=data.network;
+    const cls=data.cls;
+    const mb=data.maskedBits;
+
+    // Define the classful levels to display
+    const levels=[];
+    const dm=defMask(ip);
+
+    // Always show the classful boundary (/8, /16, /24) and the actual subnet
+    const classfulPrefixes=[];
+    if(dm>=8) classfulPrefixes.push(8);
+    if(dm>=16&&dm!==8) classfulPrefixes.push(16);
+    if(dm>=24&&dm!==16&&dm!==8) classfulPrefixes.push(24);
+    // Remove duplicates and filter those <= mb
+    const shown=new Set();
+    const prefixList=[];
+    for(const p of[8,16,24]){
+        if(p<=mb&&!shown.has(p)){shown.add(p);prefixList.push(p);}
+    }
+    if(!shown.has(mb)) prefixList.push(mb);
+
+    // Build level objects
+    for(const p of prefixList){
+        const d=compute(ip,p);
+        const parentSize=p<=8?Math.pow(2,32-8):(p<=16?Math.pow(2,32-16):Math.pow(2,32-24));
+        const ownSize=d.total;
+        // Fraction of the *parent* space this subnet occupies for the bar
+        // For /8 bar: shows the /8 block as 100% of class A space
+        // For /16 bar: shows /16 within /8
+        // For /24 bar: shows /24 within /16
+        // For custom: shows within the nearest classful parent
+        let barParentPrefix=0;
+        if(p<=8) barParentPrefix=0; // whole internet — skip complex math, just show block
+        else if(p<=16) barParentPrefix=8;
+        else if(p<=24) barParentPrefix=16;
+        else barParentPrefix=24;
+
+        const parentTotal=Math.pow(2,32-barParentPrefix);
+        const parentMaskI=barParentPrefix===0?0:(0xFFFFFFFF<<(32-barParentPrefix))>>>0;
+        const parentNetI=(ip2int(ip)&parentMaskI)>>>0;
+        const offsetInParent=d.networkInt-parentNetI;
+        const offsetPct=(offsetInParent/parentTotal)*100;
+        const widthPct=(ownSize/parentTotal)*100;
+
+        levels.push({prefix:p,network:d.network,slash:'/'+p,subnetMask:d.subnetMask,total:ownSize,usable:d.usable,first:d.first,last:d.last,broadcast:d.broadcast,isTarget:p===mb,barParentPrefix,offsetPct,widthPct,parentTotal,dm});
+    }
+
+    // ── Render ──
+    let html=`<div class="hier-panel" style="transition-delay:.75s">
+        <div class="hier-title">
+            <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+            Classful Hierarchy Breakdown
+            <span class="htag">Class ${cls}</span>
+        </div>
+        <div class="hier-levels">`;
+
+    const levelLabels={8:'Class A Block (/8)',16:'Class B Block (/16)',24:'Class C Block (/24)'};
+
+    levels.forEach((lv,idx)=>{
+        const isLast=idx===levels.length-1;
+        const label=lv.isTarget&&!levelLabels[lv.prefix]
+            ?`Your Subnet (${lv.slash})`
+            :(lv.isTarget?`${levelLabels[lv.prefix]||lv.slash} — Your Subnet`:(levelLabels[lv.prefix]||lv.slash));
+        const connector=idx>0?`<div class="hier-connector"><div class="hier-connector-line"></div><span class="hier-connector-arrow">▸ within above</span></div>`:'';
+
+        // Bar: show a thin coloured segment at the right offset inside the parent
+        const segLeft=Math.max(0,Math.min(99,lv.offsetPct)).toFixed(3);
+        const segW=Math.max(0.5,Math.min(100-lv.offsetPct,lv.widthPct)).toFixed(3);
+        const barLabel=lv.isTarget?`${lv.network}${lv.slash} (${lv.total.toLocaleString()} addrs)`:`${lv.network}${lv.slash}`;
+
+        html+=`${connector}
+        <div class="hier-level">
+            <div class="hier-level-label">
+                <span class="hl-name">${label}</span>
+                <span class="hl-info">${lv.total.toLocaleString()} addresses · ${lv.usable.toLocaleString()} usable</span>
+            </div>
+            <div class="hier-bar-wrap">
+                <div class="hier-bar-bg">
+                    <div class="hier-bar-seg" style="width:${segLeft}%;background:rgba(255,255,255,.04)"></div>
+                    <div class="hier-bar-seg seg-subnet" style="width:${segW}%;min-width:4px;${lv.isTarget?'background:rgba(230,57,70,.5);border-right:2px solid var(--red-l)':'background:rgba(230,57,70,.18);border-right:2px solid rgba(230,57,70,.5)'}"></div>
+                    <div class="hier-bar-seg" style="flex:1;background:rgba(255,255,255,.03)"></div>
+                </div>
+                <div class="hier-bar-overlay"><span>${barLabel}</span></div>
+            </div>
+        </div>`;
+    });
+
+    // Stats row
+    const target=levels[levels.length-1];
+    // subnets of this prefix within its direct classful parent
+    const directParentPrefix=target.prefix<=8?0:target.prefix<=16?8:target.prefix<=24?16:24;
+    const subnetsInParent=Math.pow(2,target.prefix-directParentPrefix);
+    // position index of this subnet within its classful parent
+    const parentMaskI2=directParentPrefix===0?0:(0xFFFFFFFF<<(32-directParentPrefix))>>>0;
+    const parentNetI2=(ip2int(target.network)&parentMaskI2)>>>0;
+    const blockSize2=target.total;
+    const subnetIndex=Math.floor((ip2int(target.network)-parentNetI2)/blockSize2)+1;
+
+    html+=`</div>
+        <div class="hier-stats-row">
+            <div class="hier-stat"><div class="hsl">This Subnet</div><div class="hsv">${target.network}${target.slash}</div><div class="hss">${target.subnetMask}</div></div>
+            <div class="hier-stat"><div class="hsl">Position in Parent /${directParentPrefix||'Internet'}</div><div class="hsv">#${subnetIndex} of ${subnetsInParent.toLocaleString()}</div><div class="hss">Subnet index (1-based)</div></div>
+            <div class="hier-stat"><div class="hsl">Address Space</div><div class="hsv">${target.first} –</div><div class="hsv">${target.last}</div></div>
+            <div class="hier-stat"><div class="hsl">Broadcast</div><div class="hsv">${target.broadcast}</div><div class="hss">${target.total.toLocaleString()} total addrs</div></div>
+        </div>
+    </div>`;
+    return html;
+}
+
 function switchTab(t){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.getElementById('tab-btn-'+t).classList.add('active');const c=document.getElementById('tab-'+t);c.classList.add('active');c.style.animation='none';void c.offsetWidth;c.style.animation='fadeUp .45s ease-out'}
+
 function renderSingle(cid,data,label){
     const c=document.getElementById(cid);
+    const hierHTML=buildHierarchy(data);
     c.innerHTML=`<div class="rhead"><h2><span class="dot"></span>Results</h2><span class="mbadge">${label}</span></div>
     <div class="rgrid">
         <div class="rcard" style="transition-delay:.1s"><div class="cicon"><svg viewBox="0 0 24 24"><path d="M7.5 21L3 12l4.5-9h3L6 12l4.5 9h-3zm6 0L9 12l4.5-9h3L12 12l4.5 9h-3z"/></svg></div><div class="clabel">Slash Notation</div><div class="cval">${data.network}${data.slash}</div><div class="csub">Class ${data.cls}</div></div>
@@ -369,13 +511,16 @@ function renderSingle(cid,data,label){
         <div class="rangec" style="transition-delay:.55s"><div class="rbar-t"><svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>Range</div><div class="rbar"><div class="rseg rnet">NET</div><div class="rseg ruse">${data.usable.toLocaleString()} Usable</div><div class="rseg rbrd">BRD</div></div><div class="rlabels"><span>${data.network}</span><span class="rlc">${data.first} — ${data.last}</span><span>${data.broadcast}</span></div></div>
         <div class="bcard" style="transition-delay:.6s"><div class="btitle"><svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>Binary Mask</div><div class="bdisp" id="bin-${cid}"></div><div class="bleg"><div class="bleg-i"><span class="bleg-c n"></span>Network (${data.maskedBits})</div><div class="bleg-i"><span class="bleg-c h"></span>Host (${data.hostBits})</div></div></div>
     </div>
-    <div class="sbar" style="transition-delay:.7s"><div class="sbar-i"><div class="sl">Network</div><div class="sv">${data.network}</div></div><div class="sbar-d"></div><div class="sbar-i"><div class="sl">First</div><div class="sv">${data.first}</div></div><div class="sbar-d"></div><div class="sbar-i"><div class="sl">Last</div><div class="sv">${data.last}</div></div><div class="sbar-d"></div><div class="sbar-i"><div class="sl">Broadcast</div><div class="sv">${data.broadcast}</div></div></div>`;
+    <div class="sbar" style="transition-delay:.7s"><div class="sbar-i"><div class="sl">Network</div><div class="sv">${data.network}</div></div><div class="sbar-d"></div><div class="sbar-i"><div class="sl">First</div><div class="sv">${data.first}</div></div><div class="sbar-d"></div><div class="sbar-i"><div class="sl">Last</div><div class="sv">${data.last}</div></div><div class="sbar-d"></div><div class="sbar-i"><div class="sl">Broadcast</div><div class="sv">${data.broadcast}</div></div></div>
+    ${hierHTML}`;
     c.classList.remove('show');void c.offsetWidth;c.classList.add('show');
     buildBin('bin-'+cid,data.maskedBits);
-    setTimeout(()=>{c.querySelectorAll('.rcard,.bcard,.sbar,.rangec').forEach((el,i)=>{el.classList.remove('ain');setTimeout(()=>el.classList.add('ain'),80+i*70)})},50);
+    setTimeout(()=>{c.querySelectorAll('.rcard,.bcard,.sbar,.rangec,.hier-panel').forEach((el,i)=>{el.classList.remove('ain');setTimeout(()=>el.classList.add('ain'),80+i*70)})},50);
     setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'start'}),300);
 }
+
 function buildBin(cid,mb){const c=document.getElementById(cid);if(!c)return;c.innerHTML='';for(let o=0;o<4;o++){if(o>0){const s=document.createElement('div');s.className='bsep';s.textContent='.';c.appendChild(s)}const od=document.createElement('div');od.className='boctet';for(let b=0;b<8;b++){const bi=o*8+b,bd=document.createElement('div');bd.className='bbit '+(bi<mb?'n':'h');bd.textContent=bi<mb?'1':'0';bd.style.opacity='0';bd.style.transform='scale(.5)';setTimeout(()=>{bd.style.transition='all .3s';bd.style.opacity='1';bd.style.transform='scale(1)'},700+bi*22);od.appendChild(bd)}c.appendChild(od)}}
+
 function calcHost(){hideErr('err-host');const ip=document.getElementById('ip-host').value.trim(),h=document.getElementById('hosts-host').value.trim();if(!ip||!validIP(ip))return showErr('err-host','Enter a valid IP.');if(!h||isNaN(h)||+h<1)return showErr('err-host','Enter valid host count.');if(+h>16777214)return showErr('err-host','Max 16,777,214.');const btn=document.getElementById('btn-host');btn.classList.add('loading');setTimeout(()=>{btn.classList.remove('loading');renderSingle('res-host',compute(ip,hostsToMask(+h)),'Host-Based')},500)}
 function calcCIDR(){hideErr('err-cidr');const ip=document.getElementById('ip-cidr').value.trim(),p=document.getElementById('cidr-pfx').value.trim();if(!ip||!validIP(ip))return showErr('err-cidr','Enter a valid IP.');if(!p||isNaN(p)||+p<1||+p>30)return showErr('err-cidr','Prefix must be 1–30.');const btn=document.getElementById('btn-cidr');btn.classList.add('loading');setTimeout(()=>{btn.classList.remove('loading');renderSingle('res-cidr',compute(ip,+p),'CIDR Checker')},500)}
 
@@ -446,56 +591,22 @@ function renderVLAN(results,base){
 
 function buildTopology(results,base){
     const n=results.length;
-    const NODE_W=190; // node card width
-    const NODE_GAP=16; // gap between nodes
-    const SIDE_PAD=10; // padding inside the scroll area
-    const canvasW=Math.max(n*(NODE_W+NODE_GAP)-NODE_GAP+SIDE_PAD*2, 500);
-
-    const routerY=0;
-    const routerH=74;
-    const routerLabelH=42;
-    const trunkTopY=routerH+routerLabelH;
-    const switchY=trunkTopY+30;
-    const switchH=48;
-    const switchLabelH=22;
-    const branchTopY=switchY+switchH;
-    const branchVertLen=60;
-    const nodeY=branchTopY+branchVertLen;
-    const nodeEstH=260;
-    const totalH=nodeY+nodeEstH+10;
-
+    const NODE_W=190,NODE_GAP=16,SIDE_PAD=10;
+    const canvasW=Math.max(n*(NODE_W+NODE_GAP)-NODE_GAP+SIDE_PAD*2,500);
+    const routerY=0,routerH=74,routerLabelH=42,trunkTopY=routerH+routerLabelH,switchY=trunkTopY+30,switchH=48,branchTopY=switchY+switchH,branchVertLen=60,nodeY=branchTopY+branchVertLen,nodeEstH=260,totalH=nodeY+nodeEstH+10;
     const switchMidX=canvasW/2;
-
-    let nodesHTML='';
-    let linesHTML='';
-
+    let nodesHTML='',linesHTML='';
     results.forEach((r,i)=>{
-        const ci=r.colorIdx%C_HEX.length;
-        const col=C_HEX[ci];
-        const nodeLeft=SIDE_PAD+i*(NODE_W+NODE_GAP);
-        const nodeCenterX=nodeLeft+NODE_W/2;
-
-        // Horizontal line from switch center to node center
-        const hLineLeft=Math.min(switchMidX,nodeCenterX);
-        const hLineRight=Math.max(switchMidX,nodeCenterX);
-        const hLineW=hLineRight-hLineLeft;
-        if(hLineW>1){
-            linesHTML+=`<div class="topo-branch-line" style="left:${hLineLeft}px;top:${branchTopY}px;width:${hLineW}px;background:repeating-linear-gradient(90deg,${col}55 0 6px,transparent 6px 12px)"></div>`;
-        }
-        // Vertical line down to node
+        const ci=r.colorIdx%C_HEX.length,col=C_HEX[ci];
+        const nodeLeft=SIDE_PAD+i*(NODE_W+NODE_GAP),nodeCenterX=nodeLeft+NODE_W/2;
+        const hLineLeft=Math.min(switchMidX,nodeCenterX),hLineRight=Math.max(switchMidX,nodeCenterX),hLineW=hLineRight-hLineLeft;
+        if(hLineW>1) linesHTML+=`<div class="topo-branch-line" style="left:${hLineLeft}px;top:${branchTopY}px;width:${hLineW}px;background:repeating-linear-gradient(90deg,${col}55 0 6px,transparent 6px 12px)"></div>`;
         linesHTML+=`<div class="topo-branch-line-v" style="left:${nodeCenterX-1}px;top:${branchTopY}px;height:${branchVertLen}px;background:repeating-linear-gradient(180deg,${col}55 0 6px,transparent 6px 12px);animation:flowDashV 1s linear infinite"></div>`;
-
-        const hostDots=Math.min(r.reqHosts,16);
-        let dots='';
+        const hostDots=Math.min(r.reqHosts,16);let dots='';
         for(let d=0;d<hostDots;d++) dots+=`<div class="tvn-host active" style="background:${col}55;border:1px solid ${col}88;animation:nodeAppear .3s ${.8+d*.03}s both"></div>`;
         if(r.reqHosts>16) dots+=`<div style="font-size:.56rem;color:var(--wm);width:100%;text-align:center;margin-top:1px">+${r.reqHosts-16} more</div>`;
-
         nodesHTML+=`<div class="topo-vlan-node" style="left:${nodeLeft}px;top:${nodeY}px;width:${NODE_W}px;border-color:${col}44;animation:nodeAppear .5s ${.3+i*.12}s both">
-            <div class="tvn-header" style="border-bottom:1px solid ${col}22">
-                <div class="tvn-dot" style="background:${col};color:${col}"></div>
-                <div class="tvn-name">${r.vlanName}</div>
-                <div class="tvn-id">${r.slash}</div>
-            </div>
+            <div class="tvn-header" style="border-bottom:1px solid ${col}22"><div class="tvn-dot" style="background:${col};color:${col}"></div><div class="tvn-name">${r.vlanName}</div><div class="tvn-id">${r.slash}</div></div>
             <div class="tvn-body">
                 <div class="tvn-row"><span>Network</span><span>${r.network}</span></div>
                 <div class="tvn-row"><span>Mask</span><span>${r.subnetMask}</span></div>
@@ -508,30 +619,19 @@ function buildTopology(results,base){
             </div>
         </div>`;
     });
-
     return `<div class="topo-section" style="transition-delay:.08s">
         <div class="topo-title"><svg viewBox="0 0 24 24"><path d="M17 16l-4-4V8.82C14.16 8.4 15 7.3 15 6c0-1.66-1.34-3-3-3S9 4.34 9 6c0 1.3.84 2.4 2 2.82V12l-4 4H3v5h5v-3.05l4-4.2 4 4.2V21h5v-5h-4z"/></svg>Network Topology After Subnetting<span class="topo-badge">Interactive</span></div>
-        <div class="topo-scroll">
-            <div class="topo-canvas" style="width:${canvasW}px;height:${totalH}px;position:relative">
-                <div class="topo-router" style="left:${switchMidX}px;top:${routerY}px">
-                    <div class="topo-router-box"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div>
-                    <div class="topo-router-label">Gateway Router</div>
-                    <div class="topo-router-sub">${base.network}/${base.cidr}</div>
-                </div>
-                <div class="topo-trunk" style="top:${trunkTopY}px;height:${switchY-trunkTopY}px"></div>
-                <div class="topo-switch" style="top:${switchY}px;left:${switchMidX}px">
-                    <div class="topo-switch-box"><svg viewBox="0 0 24 24"><path d="M20 3H4c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM5 9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm3 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12-1c0 .55-.45 1-1 1H12V6h7c.55 0 1 .45 1 1z"/></svg><span class="topo-switch-label">L3 Switch</span></div>
-                    <div class="topo-switch-sub">${results.length} VLANs configured</div>
-                </div>
-                ${linesHTML}${nodesHTML}
-            </div>
-        </div>
+        <div class="topo-scroll"><div class="topo-canvas" style="width:${canvasW}px;height:${totalH}px;position:relative">
+            <div class="topo-router" style="left:${switchMidX}px;top:${routerY}px"><div class="topo-router-box"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div><div class="topo-router-label">Gateway Router</div><div class="topo-router-sub">${base.network}/${base.cidr}</div></div>
+            <div class="topo-trunk" style="top:${trunkTopY}px;height:${switchY-trunkTopY}px"></div>
+            <div class="topo-switch" style="top:${switchY}px;left:${switchMidX}px"><div class="topo-switch-box"><svg viewBox="0 0 24 24"><path d="M20 3H4c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM5 9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm3 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12-1c0 .55-.45 1-1 1H12V6h7c.55 0 1 .45 1 1z"/></svg><span class="topo-switch-label">L3 Switch</span></div><div class="topo-switch-sub">${results.length} VLANs configured</div></div>
+            ${linesHTML}${nodesHTML}
+        </div></div>
     </div>`;
 }
 
 function buildAddrMap(results,base){
-    const totalAddrs=base.totalHosts;
-    const maxBlocks=200;
+    const totalAddrs=base.totalHosts,maxBlocks=200;
     let scale=1;if(totalAddrs>maxBlocks)scale=totalAddrs/maxBlocks;
     const blocks=[];let addr=base.baseNetI;
     const sortedR=[...results].sort((a,b)=>a.networkInt-b.networkInt);
